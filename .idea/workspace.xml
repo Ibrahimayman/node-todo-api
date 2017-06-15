@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="51d53a47-b3b1-4e09-988b-891ded757955" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/playground/mongo-delete.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dictionaries/Ibrahim_Ayman.xml" afterPath="$PROJECT_DIR$/.idea/dictionaries/Ibrahim_Ayman.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/playground/mongo-update.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -17,11 +16,11 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="mongo-delete.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/playground/mongo-delete.js">
+      <file leaf-file-name="mongo-update.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/playground/mongo-update.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="456">
-              <caret line="28" column="7" lean-forward="true" selection-start-line="28" selection-start-column="7" selection-end-line="28" selection-end-column="7" />
+            <state relative-caret-position="528">
+              <caret line="28" column="3" lean-forward="true" selection-start-line="28" selection-start-column="3" selection-end-line="28" selection-end-column="3" />
               <folding />
             </state>
           </provider>
@@ -52,6 +51,7 @@
         <option value="$PROJECT_DIR$/playground/mongodb-find.js" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/playground/mongo-delete.js" />
+        <option value="$PROJECT_DIR$/playground/mongo-update.js" />
       </list>
     </option>
   </component>
@@ -149,7 +149,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Node.js.mongo-delete.js">
+  <component name="RunManager" selected="Node.js.mongo-update.js">
     <configuration default="false" name="mongodb-connect.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="project" path-to-js-file="mongodb-connect.js" working-dir="$PROJECT_DIR$/playground">
       <method />
     </configuration>
@@ -157,6 +157,9 @@
       <method />
     </configuration>
     <configuration default="false" name="mongo-delete.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="project" path-to-js-file="mongo-delete.js" working-dir="$PROJECT_DIR$/playground">
+      <method />
+    </configuration>
+    <configuration default="false" name="mongo-update.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="project" path-to-js-file="mongo-update.js" working-dir="$PROJECT_DIR$/playground">
       <method />
     </configuration>
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
@@ -562,17 +565,19 @@
     <configuration default="true" type="osgi.bnd.run" factoryName="Test Launcher (JUnit)">
       <method />
     </configuration>
-    <list size="4">
+    <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Node.js.bin\www" />
       <item index="1" class="java.lang.String" itemvalue="Node.js.mongodb-connect.js" />
       <item index="2" class="java.lang.String" itemvalue="Node.js.mongodb-find.js" />
       <item index="3" class="java.lang.String" itemvalue="Node.js.mongo-delete.js" />
+      <item index="4" class="java.lang.String" itemvalue="Node.js.mongo-update.js" />
     </list>
     <recent_temporary>
-      <list size="3">
-        <item index="0" class="java.lang.String" itemvalue="Node.js.mongo-delete.js" />
-        <item index="1" class="java.lang.String" itemvalue="Node.js.mongodb-find.js" />
-        <item index="2" class="java.lang.String" itemvalue="Node.js.mongodb-connect.js" />
+      <list size="4">
+        <item index="0" class="java.lang.String" itemvalue="Node.js.mongo-update.js" />
+        <item index="1" class="java.lang.String" itemvalue="Node.js.mongo-delete.js" />
+        <item index="2" class="java.lang.String" itemvalue="Node.js.mongodb-find.js" />
+        <item index="3" class="java.lang.String" itemvalue="Node.js.mongodb-connect.js" />
       </list>
     </recent_temporary>
   </component>
@@ -587,12 +592,12 @@
       <option name="presentableId" value="Default" />
       <updated>1497512763295</updated>
       <workItem from="1497512878904" duration="1196000" />
-      <workItem from="1497539476273" duration="4398000" />
+      <workItem from="1497539476273" duration="5959000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5594000" />
+    <option name="totallyTimeSpent" value="7155000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1050" extended-state="6" />
@@ -690,8 +695,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/playground/mongo-delete.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="28" column="7" lean-forward="true" selection-start-line="28" selection-start-column="7" selection-end-line="28" selection-end-column="7" />
+        <state relative-caret-position="528">
+          <caret line="31" column="15" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/playground/mongo-update.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="528">
+          <caret line="28" column="3" lean-forward="true" selection-start-line="28" selection-start-column="3" selection-end-line="28" selection-end-column="3" />
           <folding />
         </state>
       </provider>
