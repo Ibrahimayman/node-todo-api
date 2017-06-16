@@ -37,7 +37,7 @@ app.get("/todos", (req, res) => {
 
 // Get by Param
 app.get("/todos/:id", (req, res) => {
-    var id = res.send(req.params.id);
+    var id = req.params.id;
     // validate id using IsValid
     if (!ObjectID.isValid(id)) {
         return res.status(400).send();
