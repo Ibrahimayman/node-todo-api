@@ -3,9 +3,12 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "",
+    "start": "node server/server.js",
     "test": "mocha server/**/*.test.js",
-    "test-watch":"nodemon --exc 'npm test'"
+    "test-watch": "nodemon --exc 'npm test'"
+  },
+  "engines": {
+    "node": "6.4.9"
   },
   "dependencies": {
     "body-parser": "~1.17.1",
