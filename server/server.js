@@ -16,10 +16,12 @@ var {authenticate} = require("./middleware/authenticate");
 var app = express();
 app.use(bodyParser.json());
 
+
 // insert new document.
-app.post("/todos", (req, res) => {
+app.post("/todos", authenticate, (req, res) => {
     var todo = new Todo({
-        text: req.body.text
+        text: req.body.text,
+        _creator: req.user._id
     });
     todo.save().then((doc) => {
         res.send(doc);
@@ -28,35 +30,40 @@ app.post("/todos", (req, res) => {
     });
 });
 
-// get all docs.
-app.get("/todos", (req, res) => {
-    Todo.find().then((docs) => {
+// get all docs for this user.
+app.get("/todos", authenticate, (req, res) => {
+    Todo.find({
+        _creator: req.user._id
+    }).then((docs) => {
         res.send({docs});
     }, (e) => {
         res.status(400).send(e);
     });
 });
 
-// Get by Param
-app.get("/todos/:id", (req, res) => {
+// Get by id.
+app.get("/todos/:id", authenticate, (req, res) => {
     var id = req.params.id;
     // validate id using IsValid
     if (!ObjectID.isValid(id)) {
         return res.status(400).send();
     }
     // select one document by Id.
-    Todo.findById(id).then((todo) => {
+    Todo.findOne({
+        _id: id,
+        _creator: req.user._id // this param will pass vis header x-auth:----
+    }).then((todo) => {
         if (!todo) {
             return res.status(400).send();
         }
         res.send({todo});
     }).catch((e) => {
-        res.status(400).send();
+        res.status(400).send(e);
     });
 });
 
 // delete document.
-app.delete("/todos/:id", (req, res) => {
+app.delete("/todos/:id", authenticate, (req, res) => {
     // get the id
     var id = req.params.id;
     //validate the id
@@ -64,18 +71,21 @@ app.delete("/todos/:id", (req, res) => {
         res.status(400).send();
     }
     // remove todo by id
-    Todo.findByIdAndRemove({_id: id}).then((todo) => {
+    Todo.findOneAndRemove({
+        _id: id,
+        _creator: req.user._id
+    }).then((todo) => {
         if (!todo) {
             res.status(400).send();
         }
         res.send(todo);
     }).catch((e) => {
-        res.status(400).send();
+        res.status(400).send(e);
     });
 });
 
 // update document.
-app.patch("/todos/:id", (req, res) => {
+app.patch("/todos/:id", authenticate, (req, res) => {
     var id = req.params.id;
     var body = _.pick(req.body, ['text', 'completed']);
     if (!ObjectID.isValid) {
@@ -88,13 +98,16 @@ app.patch("/todos/:id", (req, res) => {
         body.completed = false;
         body.completedAt = null;
     }
-    Todo.findOneAndUpdate(id, {$set: body}, {new: true}).then((todo) => {
+    Todo.findOneAndUpdate({
+        id: id,
+        _creator: req.user._id
+    }, {$set: body}, {new: true}).then((todo) => {
         if (!todo) {
             res.status(400).send();
         }
         res.send({todo});
     }).catch((e) => {
-        res.status(400).send();
+        res.status(400).send(e);
     });
 });
 
@@ -134,9 +147,9 @@ app.post('/users/login', (req, res) => {
 
 // Delete Log Out
 app.delete("/users/me/token", authenticate, (req, res) => {
-    req.user.removeToken(req.token).then(() => {
+    req.user.removeToken(req.token).then(() => { // token param will pass from the header X-auth = -----
         res.status(200).send();
-    },()=>{
+    }, () => {
         res.status(400).send();
     });
 });
