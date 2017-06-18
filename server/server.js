@@ -1,12 +1,12 @@
 /**
  * Created by Ibrahim Ayman on 15/06/2017.
  */
-
+require('./config/config');
 const express = require('express');
 const bodyParser = require("body-parser");
 const _ = require("lodash");
 const {ObjectID} = require("mongodb");
-
+const port = process.env.PORT;
 // local imports
 var {mongoose} = require("./db/mongoose");
 var {Todo} = require("./models/todo");
@@ -73,7 +73,7 @@ app.delete("/todos/:id", authenticate, (req, res) => {
     // remove todo by id
     Todo.findOneAndRemove({
         _id: id,
-        _creator: req.user._id
+        _creator: req.user._id // this param will pass vis header x-auth:----
     }).then((todo) => {
         if (!todo) {
             res.status(400).send();
@@ -100,7 +100,7 @@ app.patch("/todos/:id", authenticate, (req, res) => {
     }
     Todo.findOneAndUpdate({
         id: id,
-        _creator: req.user._id
+        _creator: req.user._id // this param will pass vis header x-auth:----
     }, {$set: body}, {new: true}).then((todo) => {
         if (!todo) {
             res.status(400).send();
@@ -155,9 +155,10 @@ app.delete("/users/me/token", authenticate, (req, res) => {
 });
 
 
-app.listen(process.env.port || 3000, () => {
-    console.log("app running");
+app.listen(port, () => {
+    console.log(`Started up at port ${port}`);
 });
 
+module.exports = {app};
 
 
